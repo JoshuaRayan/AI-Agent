@@ -100,20 +100,8 @@ const createWorkflow = () => {
 
   return new StateGraph(MessagesAnnotation)
     .addNode("agent", async (state) => {
-      // Create the system message content
-      const systemContent = SYSTEM_MESSAGE;
-
-      // Create the prompt template with system message and messages placeholder
-      const promptTemplate = ChatPromptTemplate.fromMessages([
-        new SystemMessage(systemContent),
-        new MessagesPlaceholder("messages"),
-      ]);
-
       // Trim the messages to manage conversation history
       const trimmedMessages = await trimmer.invoke(state.messages);
-
-      // Format the prompt with the current messages
-      const prompt = await promptTemplate.invoke({ messages: trimmedMessages });
 
       // Get response from the model
       const response = await model.invoke(trimmedMessages);
