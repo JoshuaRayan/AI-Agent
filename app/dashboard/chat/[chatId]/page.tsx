@@ -9,10 +9,11 @@ interface ChatPageProps {
   params: {
     chatId: Id<"chats">;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export default async function ChatPage({ params }: ChatPageProps) {
-  const { chatId } = await params;
+  const { chatId } = params;
 
   // Get user authentication
   const { userId } = await auth();
