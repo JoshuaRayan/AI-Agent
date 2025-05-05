@@ -8,9 +8,9 @@ import { auth } from "@clerk/nextjs/server";
 export default async function ChatPage({
   params,
 }: {
-  params: { chatId: Id<"chats"> };
+  params: Promise<{ chatId: Id<"chats"> }>;
 }) {
-  const { chatId } = params;
+  const { chatId } = await params;
 
   // Get user authentication
   const { userId } = await auth();
