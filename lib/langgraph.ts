@@ -2,7 +2,6 @@ import {
   AIMessage,
   BaseMessage,
   HumanMessage,
-  SystemMessage,
   trimMessages,
 } from "@langchain/core/messages";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
@@ -15,11 +14,10 @@ import {
 import { MemorySaver } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import wxflows from "@wxflows/sdk/langchain";
-import {
-  ChatPromptTemplate,
-  MessagesPlaceholder,
-} from "@langchain/core/prompts";
-import SYSTEM_MESSAGE from "@/constants/systemMessage";
+// import {
+//   ChatPromptTemplate,
+//   MessagesPlaceholder,
+// } from "@langchain/core/prompts";
 
 // Trim the messages to manage conversation history
 const trimmer = trimMessages({
